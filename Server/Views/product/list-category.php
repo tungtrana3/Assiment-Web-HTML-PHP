@@ -15,49 +15,47 @@
       <div class="content-wrapper">
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
-          <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tài khoản /</span> Danh sách tài khoản</h4>
+          <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Sản phẩm /</span> Danh sách loại sản phẩm</h4>
           <!-- Modal -->
           <!-- Default Modal -->
           <div class="col-lg-4 col-md-6">
             <div class="mt-3">
               <!-- Button trigger modal -->
-              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#basicModal">Thêm tài khoản</button>
+              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#basicModal">Thêm loại sản phẩm</button>
               <!--Add Modal -->
               <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel1">Thêm tài khoản</h5>
+                      <h5 class="modal-title" id="exampleModalLabel1">Thêm loại sản phẩm</h5>
                       <button type="button" id="closeModal" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form id="formAddUser">
+                    <form id="formAddCategory">
                       <input class="form-check-input" name="id" type="hidden" id="id" />
 
                       <div class="modal-body">
                         <div class="row">
                           <div class="col mb-3">
-                            <label for="email_address" class="form-label">Email</label>
-                            <input type="text" name="email_address" id="email_address" class="form-control" placeholder="xxxx@xxx.xx" />
+                            <label for="category_name" class="form-label">Tên loại sản phẩm</label>
+                            <input type="text" name="category_name" id="category_name" class="form-control" placeholder="Nhập tên loại" />
                           </div>
                         </div>
-                        <div class="row g-2">
-                          <div class="col mb-0">
-                            <label for="phone_number" class="form-label">Phone Number</label>
-                            <input type="text" name="phone_number" id="phone_number" class="form-control" placeholder="Enter Name" />
+                        <div class="row">
+                          <div class="col mb-3">
+                            <label for="image" class="form-label">Hình ảnh</label>
+                            <img src="" name="image" id="image" class="w-px-100 h-px-100" />
+                          </div>
+                          <div class="col mb-3">
+                            <label for="file" class="form-label">Chọn ảnh mới</label>
+                            <input class="form-control" type="file" name="file" id="file" />
                           </div>
                         </div>
-                        <div class="row g-2">
-                          <div class="col mb-0">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password" />
-                          </div>
-                        </div>
-                        <div class="row g-2">
-                          <div class="col mb-0">
-                            <label for="isAdmin" class="form-label">Is Admin</label>
-                            <input class="form-check-input" name="isAdmin" class="checkbox" type="checkbox" id="isAdmin" />
-                          </div>
 
+                        <div class="row g-2">
+                          <div class="col mb-0">
+                            <label for="description" class="form-label">Mô tả</label>
+                            <input type="text" name="description" id="description" class="form-control" placeholder="Nhập mô tả" />
+                          </div>
                         </div>
                         <div>
                           <div class="col mb-0">
@@ -83,7 +81,7 @@
             <div class="modal-dialog modal-sm" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel2">Bạn chắc chắn muốn xoá tài khoản này?</h5>
+                  <h5 class="modal-title" id="exampleModalLabel2">Bạn chắc chắn muốn xoá loại sản phẩm này?</h5>
                 </div>
                 <div class="modal-footer">
                   <input class="form-check-input" name="del_id" type="hidden" id="del_id" />
@@ -98,35 +96,34 @@
           <hr class="my-3" />
           <!-- Responsive Table -->
           <div class="card">
-            <h5 class="card-header">Danh sách tài khoản</br>
+            <h5 class="card-header">Danh sách loại sản phẩm</br>
               <div class="table-responsive text-nowrap">
                 <table class="table">
                   <thead>
                     <tr class="text-nowrap">
                       <th>#</th>
                       <th>Ảnh</th>
-                      <th>Email</th>
-                      <th>Số điện thoại</th>
-                      <th>Loại</th>
+                      <th>Tên loại</th>
+                      <th>Mô tả</th>
                       <th>Trạng thái</th>
                       <th>Hành động</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <?php for ($i = 0; $i < count($Users); $i++) { ?>
+                    <?php for ($i = 0; $i < count($Categorys); $i++) { ?>
                       <tr>
                         <th scope="row"><?= $i + 1 ?></th>
                         <td>
-                          <img src="<?= $Users[$i]['avatar'] ?>" onerror="this.src='../../public/assets/img/avatars/1.png'" class="w-px-40 h-auto  rounded-circle" />
+                          <img src="<?= $Categorys[$i]['image'] ?>" onerror="this.src='../../public/assets/img/avatars/1.png'" class="w-px-40 h-px-40  rounded-circle" />
                         </td>
-                        <!-- <td><?= $Users[$i]['id'] ?></td> -->
-                        <td><?= $Users[$i]['email_address'] ?></td>
-                        <td><?= $Users[$i]['phone_number'] ?></td>
-                        <td><?= ($Users[$i]['isAdmin'] == 1 ? 'Admin' : 'Khách') ?></td>
-                        <td><?= ($Users[$i]['is_active'] == 1 ? 'Hoạt động' : 'Khoá') ?></td>
+                        <!-- <td><?= $Categorys[$i]['id'] ?></td> -->
+                        <td><?= $Categorys[$i]['category_name'] ?></td>
+                        <td><?= $Categorys[$i]['description'] ?></td>
+                        <td><?= ($Categorys[$i]['is_active'] == 1 ? 'Hoạt động' : 'Khoá') ?></td>
                         <td>
-                          <button type="button" class=" edit btn btn-outline-primary" data-is-admin="<?php echo $Users[$i]['isAdmin']; ?>" data-id="<?php echo $Users[$i]['id']; ?>" data-email-address="<?php echo $Users[$i]['email_address']; ?>" data-phone-number="<?php echo $Users[$i]['phone_number']; ?>" data-is-active="<?php echo $Users[$i]['is_active']; ?>" data-bs-toggle="modal" data-bs-target="#basicModal">Sửa</button>
-                          <button value="<?php echo $Users[$i]['id']; ?>" type="button" class=" delete btn btn-outline-danger" data-bs-toggle="modal" data-id="<?php echo $Users[$i]['id']; ?>" data-bs-target="#smallModal">Xoá</button>
+                          <button type="button" class=" edit btn btn-outline-primary
+                          " data-id="<?php echo $Categorys[$i]['id']; ?>" data-category-name="<?php echo $Categorys[$i]['category_name']; ?>" data-description="<?php echo $Categorys[$i]['description']; ?>" data-image="<?php echo $Categorys[$i]['image']; ?>" data-is-active="<?php echo $Categorys[$i]['is_active']; ?>" data-bs-toggle="modal" data-bs-target="#basicModal">Sửa</button>
+                          <button value="<?php echo $Categorys[$i]['id']; ?>" type="button" class=" delete btn btn-outline-danger" data-bs-toggle="modal" data-id="<?php echo $Categorys[$i]['id']; ?>" data-bs-target="#smallModal">Xoá</button>
                         </td>
                       </tr>
                     <?php }; ?>
@@ -138,7 +135,7 @@
           <div class="card mb-4">
             <!-- Basic Pagination -->
             <div class="card-body">
-              <h6>Tìm thấy <?= count($Users) ?> kết quả</h6>
+              <h6>Tìm thấy <?= count($Categorys) ?> kết quả</h6>
               </h5>
 
               <div class="row">
@@ -165,7 +162,7 @@
                             <li class="page-item active">
                               <a class="page-link" href="<?php echo $href ?>"><?= $i ?></a>
                             </li>
-                          <?php } else if (count($Users) > 0 || $i < $page) { ?>
+                          <?php } else if (count($Categorys) > 0 || $i < $page) { ?>
                             <li class="page-item">
                               <a class="page-link" href="<?php echo $href ?>"><?= $i ?></a>
                             </li>
@@ -197,47 +194,86 @@
               $('#password').prop("disabled", false);
             }
           })
-
-          $('#formAddUser').submit(function(e) {
+          $('#formAddCategory').submit(function(e) {
             e.preventDefault();
             var form = $(this);
             let id = $('#id').val();
-            let url = '/api/addUser'
+            let url = 'api/category/add'
+            var img_url = $('#image').attr('src');
+
             if (id != undefined && id != '') {
-              url = '/api/updateUser'
+              url = 'api/category/update'
             }
-            $.ajax({
-              type: 'POST',
-              url: url,
-              data: form.serialize(),
-              success: function(res) {
-                if (id != undefined && id != '') {
-                  alert('Cập nhật tài khoản thành công');
-                } else {
-                  alert('Thêm tài khoản thành công');
+
+            if (img_url != '' && img_url != undefined && $('#file')[0].files[0] == undefined) {
+              $.ajax({
+                type: 'POST',
+                url: url,
+                data: form.serialize() + "&image=" + img_url,
+                success: function(res) {
+                  if (id != undefined && id != '') {
+                    alert('Cập nhật loại sản phẩm thành công');
+                  } else {
+                    alert('Thêm loại sản phẩm thành công');
+                  }
+                  $('#closeModal').click();
+                  $('#reset').click();
+                  location.reload()
+                },
+                error: function(res) {
+                  alert(JSON.parse(res.responseText).msg);
                 }
-                $('#closeModal').click();
-                $('#reset').click();
-                location.reload()
-              },
-              error: function(res) {
-                alert(JSON.parse(res.responseText).msg);
-              }
-            });
+              });
+            } else {
+              var formData = new FormData();
+              formData.append('file', $('#file')[0].files[0]);
+              $.ajax({
+                url: 'api/upload',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(res) {
+                  let img_url = JSON.parse(res).data
+                  $('#image').prop("src", img_url);
+                  $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: form.serialize() + "&image=" + img_url,
+                    success: function(res) {
+                      if (id != undefined && id != '') {
+                        alert('Cập nhật loại sản phẩm thành công');
+                      } else {
+                        alert('Thêm loại sản phẩm thành công');
+                      }
+                      $('#closeModal').click();
+                      $('#reset').click();
+                      location.reload()
+                    },
+                    error: function(res) {
+                      alert(JSON.parse(res.responseText).msg);
+                    }
+                  });
+                },
+                error: function(res) {
+                  alert(JSON.parse(res.responseText).msg);
+                }
+              });
+            }
+
           });
           $(document).on("click", ".edit", function() {
             let id = $(this).data('id')
-            let email_address = $(this).data('email-address')
+            let category_name = $(this).data('category-name')
             let is_active = $(this).data('is-active')
-            let phone_number = $(this).data('phone-number')
-            let isAdmin = $(this).data('is-admin')
-            $('#password').prop("disabled", true);
+            let description = $(this).data('description')
+            let image = $(this).data('image')
 
-            $('#isAdmin').prop("checked", isAdmin == 1);
+            $('#category_name').prop("value", category_name);
             $('#is_active').prop("checked", is_active == 1);
-            $('#email_address').prop("value", email_address);
+            $('#description').prop("value", description);
             $('#id').prop("value", id);
-            $('#phone_number').prop("value", phone_number);
+            $('#image').prop("src", image);
           })
           $(document).on("click", ".delete", function() {
             let id = $(this).data('id')
@@ -250,7 +286,7 @@
             }
             $.ajax({
               type: 'POST',
-              url: 'api/deleteUser',
+              url: 'api/category/delete',
               data: data,
               success: function(res) {
                 alert('Xoá thành công');

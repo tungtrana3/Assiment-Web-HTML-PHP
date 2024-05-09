@@ -122,4 +122,24 @@ class UserController extends \Core\BaseController
         $result = array('data' => $result);
         $this->Database->sendResponse(200, json_encode($result));
     }
+    public function deleteUser()
+    {
+        if ($_SERVER['REQUEST_METHOD'] !== "POST") {
+            return $this->Database->sendResponse(405);
+        }
+        $msg = null;
+        $id  = (isset($_POST['id'])    && !empty($_POST['id']))   ? $_POST['id']   :  null;
+
+        if ($id == null) {
+            $msg = array('msg' => "Dữ liệu không hợp lệ");
+            return $this->Database->sendResponse(400, json_encode($msg));
+        }
+        if ($msg != null) {
+            return $this->Database->sendResponse(400, json_encode(array('msg' => $msg)));
+        }
+        $result = $this->Database->deleteUser($id);
+
+        $result = array('data' => $result);
+        $this->Database->sendResponse(200, json_encode($result));
+    }
 }

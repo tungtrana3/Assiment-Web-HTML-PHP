@@ -62,7 +62,19 @@ return [
         "controller" => Controllers\UserController::class,
         "method" => 'updateUser'
     ],
-    // Product Type
+    [
+        "url" => "/api/deleteUser",
+        "name" => "deleteUser",
+        "controller" => Controllers\UserController::class,
+        "method" => 'deleteUser'
+    ],
+    // Category Type
+    [
+        "url" => "/category",
+        "name" => "show",
+        "controller" => Controllers\CategoryController::class,
+        "method" => 'show'
+    ],
     [
         "url" => "/api/category/getAll",
         "name" => "getCategory",
@@ -80,6 +92,12 @@ return [
         "name" => "updateCategory",
         "controller" => Controllers\CategoryController::class,
         "method" => 'updateCategory'
+    ],
+    [
+        "url" => "/api/category/delete",
+        "name" => "delete",
+        "controller" => Controllers\CategoryController::class,
+        "method" => 'delete'
     ],
     // Product
     [

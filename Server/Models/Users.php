@@ -21,8 +21,8 @@ class Users extends Model
     public function getUsers($page, $size, $search)
     {
         $offset = $page * $size - $size;
-        $Query = "SELECT * FROM user  WHERE `email_address` LIKE '%$search%'
-         OR  `phone_number` LIKE '%$search%' 
+        $Query = "SELECT * FROM user  WHERE (`email_address` LIKE '%$search%'
+         OR  `phone_number` LIKE '%$search%') AND  `delete_at` IS NULL
          LIMIT $size OFFSET $offset";
         return $this->SelectRow($Query);
     }
@@ -59,7 +59,7 @@ class Users extends Model
     }
     public function deleteUser($id)
     {
-        $Query =  "UPDATE `user` SET `deleta_at`=current_timestamp WHERE WHERE id = '$id'";
+        $Query =  "UPDATE `user` SET `delete_at`=current_timestamp  WHERE id = '$id'";
         return $this->UpdateRow($Query, [], true);
     }
 }
