@@ -10,8 +10,29 @@ class UserController extends \Core\BaseController
 
     public function index()
     {
-        $Users = $this->Database->getUsers();
+        $Users = $this->Database->getUsers(1, 20, '');
+        $result = array('items' => $Users);
         view('index/index', compact('Users'));
+    }
+    public function show()
+    {
+        $page  = (isset($_GET['page'])    && !empty($_GET['page']))   ? $_GET['page']   :  1;
+        $size  = (isset($_GET['size'])    && !empty($_GET['size']))   ? $_GET['size']   :  20;
+        $search  = (isset($_GET['search'])    && !empty($_GET['search']))   ? $_GET['search']   :  '';
+        $Users = $this->Database->getUsers($page, $size, $search);
+        view('account/list-account', compact('Users'));
+    }
+    public function login()
+    {
+        view('account/login');
+    }
+    public function register()
+    {
+        view('account/register');
+    }
+    public function forgotPwd()
+    {
+        view('account/forgotPassword');
     }
     public function getUsers()
     {
@@ -31,7 +52,7 @@ class UserController extends \Core\BaseController
         $isAdmin  = (isset($_POST['isAdmin'])    && !empty($_POST['isAdmin']))   ? $_POST['isAdmin']   :  false;
 
         if ($email_address == null || $phone_number == null || $password == null) {
-            $msg = array('msg' => "Dữ liệu không hợp lệ");
+            $msg = array('msg' => "Dữ liệu không hợp lệ 123");
             return $this->Database->sendResponse(400, json_encode($msg));
         }
         if (!filter_var($email_address, FILTER_VALIDATE_EMAIL)) {
@@ -65,7 +86,8 @@ class UserController extends \Core\BaseController
         $email_address  = (isset($_POST['email_address'])    && !empty($_POST['email_address']))   ? $_POST['email_address']   :  null;
         $phone_number  = (isset($_POST['phone_number'])    && !empty($_POST['phone_number']))   ? $_POST['phone_number']   :  null;
         $password  = (isset($_POST['password'])    && !empty($_POST['password']))   ? $_POST['password']   :  null;
-        $isAdmin  = (isset($_POST['isAdmin'])    && !empty($_POST['isAdmin']))   ? $_POST['isAdmin']   :  false;
+        $isAdmin  = (isset($_POST['isAdmin'])  && !empty($_POST['isAdmin'])) ? '1'  :  '0';
+        $is_active  = (isset($_POST['is_active'])  && !empty($_POST['is_active'])) ? '1'  :  '0';
 
         if ($id == null) {
             $msg = array('msg' => "Dữ liệu không hợp lệ");
@@ -95,7 +117,7 @@ class UserController extends \Core\BaseController
         if ($msg != null) {
             return $this->Database->sendResponse(400, json_encode(array('msg' => $msg)));
         }
-        $result = $this->Database->updateUser($id, $email_address, $phone_number, $password, $isAdmin);
+        $result = $this->Database->updateUser($id, $email_address, $phone_number, $password, $isAdmin, $is_active);
 
         $result = array('data' => $result);
         $this->Database->sendResponse(200, json_encode($result));

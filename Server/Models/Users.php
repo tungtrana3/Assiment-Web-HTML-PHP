@@ -18,9 +18,12 @@ class Users extends Model
         $this->password = '';
         $this->isAdmin = false;
     }
-    public function getUsers()
+    public function getUsers($page, $size, $search)
     {
-        $Query = "SELECT * FROM user";
+        $offset = $page * $size - $size;
+        $Query = "SELECT * FROM user  WHERE `email_address` LIKE '%$search%'
+         OR  `phone_number` LIKE '%$search%' 
+         LIMIT $size OFFSET $offset";
         return $this->SelectRow($Query);
     }
     public function getUsersById($id)
@@ -40,15 +43,23 @@ class Users extends Model
         $Query = "SELECT * FROM user WHERE phone_number = '" . $phone_number . "'";
         return $this->SelectRow($Query);
     }
-    public function updateUser($id, $email_address, $phone_number, $password, $isAdmin)
+    public function updateUser($id, $email_address, $phone_number, $password, $isAdmin, $is_active)
     {
-        $Query = "UPDATE `user` SET `email_address`='$email_address',`phone_number`='$phone_number',`password`='$password',`isAdmin`=$isAdmin WHERE id = '$id'";
+        $Query = "UPDATE `user` SET `email_address`='$email_address',`phone_number`='$phone_number',`password`='$password',
+        `isAdmin`=$isAdmin,
+        `is_active`=$is_active
+        WHERE id = '$id'";
         return $this->UpdateRow($Query, [], true);
     }
     public function addUser($email_address, $phone_number, $password, $isAdmin)
     {
-        $Query =  "INSERT INTO `user`( `id`,`email_address`, `phone_number`, `password`, `isAdmin`) 
-        VALUES (NULL,'$email_address',' $phone_number','$password',false);";
+        $Query =  "INSERT INTO `user`( `id`,`email_address`, `phone_number`, `password`, `isAdmin`, `avatar`, `is_active`) 
+        VALUES (NULL,'$email_address',' $phone_number','$password',false, '', true);";
         return $this->InsertRow($Query, [], true);
+    }
+    public function deleteUser($id)
+    {
+        $Query =  "UPDATE `user` SET `deleta_at`=current_timestamp WHERE WHERE id = '$id'";
+        return $this->UpdateRow($Query, [], true);
     }
 }
