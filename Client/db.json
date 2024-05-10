@@ -1,0 +1,208 @@
+Table user {
+    id integer [primary key]
+    email_address varchar
+    phone_number varchar
+    password varchar
+    role enum
+  }
+  Table user_address {
+    id integer [primary key]
+    user_id integer
+    address_id integer
+    is_default bool
+  }
+  Table address {
+    id integer [primary key]
+    unit_number varchar
+    street_number varchar
+    address_line1 varchar
+    address_line2 varchar
+    city varchar
+    region varchar
+    postal_code varchar
+    country_id integer
+  }
+  Table country {
+    id integer [primary key]
+    country_name varchar
+  }
+  Table user_review {
+    id integer [primary key]
+    user_id integer
+    ordered_product_id integer
+    rating_value integer
+    comment nvarchar
+  }
+  Table user_payment_method {
+    id integer [primary key]
+    user_id integer
+    payment_type_id integer
+    provider varchar
+    account_number varchar
+    expiry_date timestamp
+    is_default bool
+  }
+  Table payment_type {
+    id integer [primary key]
+    value varchar
+  }
+  Table shopping_cart {
+    id integer [primary key]
+    user_id integer
+  }
+  Table shopping_cart_item {
+    id integer [primary key]
+    cart_id integer
+    product_item_id integer
+    quanty integer
+  }
+  Table order {
+    id integer [primary key]
+    user_id integer
+    order_date timestamp
+    payment_method_id integer
+    shipping_address integer
+    shipping_method integer
+    order_total integer
+    order_status integer
+  }
+  Table order_status {
+    id integer [primary key]
+    status varchar
+    description varchar
+  }
+  Table order_line {
+    id integer [primary key]
+    product_item_id integer
+    order_id integer
+    quanty integer
+    price decimal
+  }
+  
+  Table product_configuration {
+    id integer [primary key]
+    product_item_id integer
+    variation_option_id integer
+  }
+  
+  Table variation_option {
+    id integer [primary key]
+    variation_id integer
+    value varchar
+  }
+  
+  Table category {
+    id integer [primary key]
+    parent_category_id integer
+    category_name varchar
+  }
+  Table product {
+    id integer [primary key]
+    category_id integer
+    name varchar
+    description varchar
+    product_image varchar
+    product_thumbnail varchar
+  }
+  Table product_item {
+    id integer [primary key]
+    product_id integer
+    SKU varchar
+    quanty_in_stock integer
+    price decimal
+    product_thumbnail varchar
+  }
+  Table promotion {
+    id integer [primary key]
+    name varchar
+    description varchar
+    discount_rate varchar
+    start_date timestamp
+    end_date timestamp
+  }
+  
+  Table promotion_product {
+    id integer [primary key]
+    promotion_id integer
+    product_id integer
+  }
+  Table shipping_method {
+    id integer [primary key]
+    name varchar
+    price decimal
+  }
+  
+  Ref {
+    address.country_id > country.id
+  }
+  Ref {
+    user_address.address_id > address.id
+  }
+  Ref {
+    user.id < user_address.user_id
+  }
+  Ref {
+    user.id < user_review.user_id
+  }
+  Ref {
+    user.id < user_payment_method.user_id
+  }
+  Ref {
+    user_payment_method.payment_type_id > payment_type.id
+  }
+  Ref {
+    user.id - shopping_cart.user_id
+  }
+  Ref {
+    shopping_cart.id > shopping_cart_item.cart_id
+  }
+  Ref {
+    shopping_cart_item.product_item_id > product_item.id
+  }
+  Ref {
+    order.id > order_line.order_id
+  }
+  Ref {
+    order_line.product_item_id > product_item.id
+  }
+  Ref {
+    order_line.id < user_review.ordered_product_id
+  }
+  Ref {
+    order_status.id < order.order_status
+  }
+  Ref {
+    order.shipping_address > address.id
+  }
+  Ref {
+    shipping_method.id < order.shipping_method
+  }
+  Ref {
+    product_configuration.product_item_id > product_item.id
+  }
+  Ref {
+    product_configuration.variation_option_id > variation_option.id
+  }
+  Ref {
+    product_item.product_id > product.id
+  }
+  Ref {
+    promotion_product.product_id > product_item.id
+  }
+  Ref {
+    promotion_product.promotion_id > promotion.id
+  }
+  Ref {
+    product.category_id > category.id
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
