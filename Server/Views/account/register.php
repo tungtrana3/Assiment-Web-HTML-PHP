@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <!-- Logo -->
                     <div class="app-brand justify-content-center">
-                        <a href="index.html" class="app-brand-link gap-2">
+                        <a href="/" class="app-brand-link gap-2">
                             <span class="app-brand-logo demo">
                                 <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                     <defs>
@@ -52,7 +52,7 @@
                     <h4 class="mb-2">Adventure starts here 🚀</h4>
                     <p class="mb-4">Make your app management easy and fun!</p>
 
-                    <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+                    <form id="formAuthentication" class="mb-3" action="/" method="POST">
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" autofocus />
@@ -83,7 +83,7 @@
 
                     <p class="text-center">
                         <span>Already have an account?</span>
-                        <a href="auth-login-basic.html">
+                        <a href="/login">
                             <span>Sign in instead</span>
                         </a>
                     </p>

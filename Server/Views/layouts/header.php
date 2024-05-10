@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Login Basic - Pages | Autumn Shop - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Autumn Shop</title>
 
     <meta name="description" content="" />
 
@@ -39,4 +39,5 @@
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../../public/assets/js/config.js"></script>
 </head>
+
 <body>

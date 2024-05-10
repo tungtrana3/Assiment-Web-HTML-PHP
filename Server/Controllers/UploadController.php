@@ -30,7 +30,9 @@ class UploadController extends \Core\BaseController
                 echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
             } else {
                 if (file_exists(__DIR__ . "/../public/upload/" . $_FILES["file"]["name"])) {
-                    $msg =  $_FILES["file"]["name"] . " already exists. ";
+                    $result = array('data' => $storeUrl . $_FILES["file"]["name"]);
+                    return $this->Database->sendResponse(200, json_encode($result, JSON_UNESCAPED_SLASHES));
+                    // $msg =  $_FILES["file"]["name"] . " already exists. ";
                 } else {
                     move_uploaded_file(
                         $_FILES["file"]["tmp_name"],

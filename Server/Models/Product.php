@@ -18,20 +18,39 @@ class Product extends Model
         $this->is_active = true;
         // $this->parent_product_id = 0;
     }
-    public function getproduct($product_name, $is_active, $category_id)
+    public function getCategory($page, $size, $search, $is_active)
     {
-        $Query = "SELECT * FROM product WHERE `name` LIKE '%$product_name%' && is_active LIKE '%$is_active%' && category_id LIKE '%$category_id%' ";
+        $offset = $page * $size - $size;
+        $Query = "SELECT * FROM category WHERE category_name LIKE '%$search%' AND   `delete_at` IS NULL LIMIT $size OFFSET $offset";
         return $this->SelectRow($Query);
     }
-    public function addproduct($category_id, $product_name, $description, $product_thumbnail, $product_image)
+    public function getProduct($page, $size, $search, $is_active, $category_id)
     {
-        $Query =  "INSERT INTO `product`( `id`,`category_id`, `name`, `description`, `product_thumbnail`, `product_image`,`is_active`) 
-        VALUES (NULL,'$category_id','$product_name','$description','$product_thumbnail','$product_image',true);";
+        $offset = $page * $size - $size;
+        $Query = "SELECT * FROM product WHERE `name` LIKE '%$search%'  AND `category_id` LIKE '%$category_id%'
+        AND `delete_at` IS NULL LIMIT $size OFFSET $offset";
+        return $this->SelectRow($Query);
+    }
+    public function addproduct($category_id, $product_name, $description, $product_image,  $quan,  $price, $is_active)
+    {
+        $Query =  "INSERT INTO `product`( `id`,`category_id`, `name`, `description`,`product_image`,`quan`,`price`,`is_active`) 
+        VALUES (NULL,'$category_id','$product_name','$description','$product_image','$quan','$price',true);";
         return $this->InsertRow($Query, [], true);
     }
-    public function updateproduct($id, $category_id, $product_name, $description, $product_thumbnail, $product_image, $is_active)
+    public function updateproduct($id, $category_id, $product_name, $description, $product_image,  $quan,  $price, $is_active)
     {
-        $Query = "UPDATE `product` SET `category_id`='$category_id',`name`='$product_name',`description`='$description',`product_thumbnail`='$product_thumbnail',`product_image`='$product_image',`is_active`=$is_active WHERE id = '$id'";
+        $Query = "UPDATE `product` SET `category_id`='$category_id',
+        `name`='$product_name',
+        `description`='$description',
+        `product_image`='$product_image',
+        `quan`='$quan',
+        `price`='$price',
+        `is_active`=$is_active WHERE id = '$id'";
+        return $this->UpdateRow($Query, [], true);
+    }
+    public function delete($id)
+    {
+        $Query =  "UPDATE `product` SET `delete_at`=current_timestamp  WHERE id = '$id'";
         return $this->UpdateRow($Query, [], true);
     }
 }

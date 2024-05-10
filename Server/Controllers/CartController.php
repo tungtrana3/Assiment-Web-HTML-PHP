@@ -2,33 +2,46 @@
 
 namespace Controllers;
 
-use Models\Category;
+use Models\cart;
 
-class CategoryController extends \Core\BaseController
+class CartController extends \Core\BaseController
 {
-    protected string $Model = "Category";
+    protected string $Model = "Cart";
 
     public function show()
     {
-        $page  = (isset($_GET['page'])    && !empty($_GET['page']))   ? $_GET['page']   :  1;
-        $size  = (isset($_GET['size'])    && !empty($_GET['size']))   ? $_GET['size']   :  20;
-        $is_active  = (isset($_GET['is_active'])    && !empty($_GET['is_active']))   ? '0'   :  '1';
-        $search  = (isset($_GET['search'])    && !empty($_GET['search']))   ? $_GET['search']   :  '';
+        $user_id  = (isset($_GET['user_id'])    && !empty($_GET['user_id']))   ? $_GET['user_id']   :  '1';
 
-        $Categorys = $this->Database->getCategory($page, $size, $search, $is_active);
+        $data = $this->Database->getCart($user_id);
 
-        view('product/list-category', compact('Categorys'));
+        $Carts = array();
+        foreach ($data as $elem) {
+            $products = $this->Database->getProductName($elem['product_item_id']);
+            $product = $products[0];
+            $elem_format = array(
+                "id" => $elem['id'],
+                "quanty" => $elem['quanty'],
+                "total" => $elem['quanty'] * $product['price'],
+                "product_item_id" => $elem['product_item_id'],
+                "product_image" => $product['product_image'],
+                "product_name" => $product['name'],
+                "product_price" => $product['price'],
+            );
+            array_push($Carts, $elem_format);
+        }
+
+        view('cart/list-cart', compact('Carts'));
     }
-    public function getCategory()
+    public function getCart()
     {
-        $name  = (isset($_GET['name'])    && !empty($_GET['name']))   ? $_GET['name']   :  '';
-        $is_active  = (isset($_POST['is_active'])  && !empty($_POST['is_active'])) ? '1'  :  '0';
+        $user_id  = (isset($_GET['user_id'])    && !empty($_GET['user_id']))   ? $_GET['user_id']   :  '1';
 
-        $data = $this->Database->getCategory($name, $is_active);
-        $result = array('data' => $data);
+        $Carts = $this->Database->getCart($user_id);
+
+        $result = array('data' => $Carts);
         $this->Database->sendResponse(200, json_encode($result));
     }
-    public function addCategory()
+    public function addToCart()
     {
         if ($_SERVER['REQUEST_METHOD'] !== "POST") {
             return $this->Database->sendResponse(405);
@@ -37,22 +50,22 @@ class CategoryController extends \Core\BaseController
 
         $image  = (isset($_POST['image'])    && !empty($_POST['image']))   ? $_POST['image']   :  null;
         $description  = (isset($_POST['description'])    && !empty($_POST['description']))   ? $_POST['description']   :  null;
-        $category_name  = (isset($_POST['category_name'])    && !empty($_POST['category_name']))   ? $_POST['category_name']   :  null;
+        $Cart_name  = (isset($_POST['Cart_name'])    && !empty($_POST['Cart_name']))   ? $_POST['Cart_name']   :  null;
 
-        if ($category_name == null || $image == null) {
+        if ($Cart_name == null || $image == null) {
             $msg = array('msg' => "Dữ liệu không hợp lệ");
             return $this->Database->sendResponse(400, json_encode($msg));
         }
         if ($msg != null) {
             return $this->Database->sendResponse(400, json_encode(array('msg' => $msg)));
         }
-        $result = $this->Database->addCategory($category_name, $image, $description);
+        $result = $this->Database->addCart($Cart_name, $image, $description);
 
         $result = array('data' => $result);
 
         $this->Database->sendResponse(200, json_encode($result));
     }
-    public function updateCategory()
+    public function updateCart()
     {
         if ($_SERVER['REQUEST_METHOD'] !== "POST") {
             return $this->Database->sendResponse(405);
@@ -64,11 +77,11 @@ class CategoryController extends \Core\BaseController
 
         $image  = (isset($_POST['image'])    && !empty($_POST['image']))   ? $_POST['image']   :  null;
         $id  = (isset($_POST['id'])    && !empty($_POST['id']))   ? $_POST['id']   :  null;
-        $category_name  = (isset($_POST['category_name'])    && !empty($_POST['category_name']))   ? $_POST['category_name']   :  null;
+        $Cart_name  = (isset($_POST['Cart_name'])    && !empty($_POST['Cart_name']))   ? $_POST['Cart_name']   :  null;
         $is_active  = (isset($_POST['is_active'])  && !empty($_POST['is_active'])) ? '1'  :  '0';
         $description  = (isset($_POST['description'])    && !empty($_POST['description']))   ? $_POST['description']   :  '';
 
-        if ($category_name == null || $image == null || $id == null) {
+        if ($Cart_name == null || $image == null || $id == null) {
             $msg = array('msg' => "Dữ liệu không hợp lệ");
             return $this->Database->sendResponse(400, json_encode($msg));
         }
@@ -76,21 +89,22 @@ class CategoryController extends \Core\BaseController
             return $this->Database->sendResponse(400, json_encode(array('msg' => $msg)));
         }
 
-        $result = $this->Database->updateCategory($id, $category_name, $image, $is_active, $description);
+        $result = $this->Database->updateCart($id, $Cart_name, $image, $is_active, $description);
 
         $result = array('data' => $result);
         $this->Database->sendResponse(200, json_encode($result));
     }
-    public function delete()
+    public function removeFromCart()
     {
         if ($_SERVER['REQUEST_METHOD'] !== "POST") {
             return $this->Database->sendResponse(405);
         }
         $msg = null;
-        $id  = (isset($_POST['id'])    && !empty($_POST['id']))   ? $_POST['id']   :  null;
+
+        $id  = (isset($_POST['id']) && !empty($_POST['id']))   ? $_POST['id']   :  null;
 
         if ($id == null) {
-            $msg = array('msg' => "Dữ liệu không hợp lệ");
+            $msg = array('msg' => "Dữ liệu không hợp lệ nha");
             return $this->Database->sendResponse(400, json_encode($msg));
         }
         if ($msg != null) {

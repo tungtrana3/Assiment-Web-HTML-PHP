@@ -69,7 +69,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="/list-account" class="menu-link">
+                    <a href="/list-account-locked" class="menu-link">
                         <div data-i18n="Account">Danh sách tài khoản bị khoá</div>
                     </a>
                 </li>
@@ -82,17 +82,17 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="auth-login-basic.html" class="menu-link" target="_blank">
+                    <a href="/category" class="menu-link">
                         <div data-i18n="Basic">Danh sách loại sản phẩm</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="auth-register-basic.html" class="menu-link" target="_blank">
+                    <a href="/product" class="menu-link">
                         <div data-i18n="Basic">Danh sách sản phẩm</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="auth-forgot-password-basic.html" class="menu-link" target="_blank">
+                    <a href="/promotion" class="menu-link">
                         <div data-i18n="Basic">Chương trình giảm giá</div>
                     </a>
                 </li>
@@ -105,17 +105,17 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="auth-login-basic.html" class="menu-link" target="_blank">
+                    <a href="/order" class="menu-link">
                         <div data-i18n="Basic">Đơn hàng mới</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="auth-register-basic.html" class="menu-link" target="_blank">
+                    <a href="/order-finished" class="menu-link">
                         <div data-i18n="Basic">Đơn hàng đã hoàn thành</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="auth-forgot-password-basic.html" class="menu-link" target="_blank">
+                    <a href="/order-canceled" class="menu-link">
                         <div data-i18n="Basic">Đơn hàng đã huỷ</div>
                     </a>
                 </li>
