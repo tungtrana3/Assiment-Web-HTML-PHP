@@ -37,10 +37,10 @@ class cart extends Model
         $Query = "SELECT * FROM product WHERE `id` = '$id'";
         return $this->SelectRow($Query);
     }
-    public function addToCart($cart_id, $product_item_id, $quan)
+    public function addToCart($cart_id, $quan, $product_id)
     {
         $Query =   "INSERT INTO `shopping_cart_item`(`id`, `cart_id`, `product_item_id`, `quanty`, `delete_at`, `ordered_at`) 
-        VALUES (NULL,'$cart_id',true,'$product_item_id','$quan', NULL, NULL);";
+        VALUES (NULL,'$cart_id','$product_id','$quan', NULL, NULL);";
 
         return $this->InsertRow($Query, [], true);
     }

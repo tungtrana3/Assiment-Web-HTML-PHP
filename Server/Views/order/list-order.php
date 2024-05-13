@@ -1,4 +1,4 @@
-<?php $Title = "Autumn Shop" ?>
+<?php $Title = "Autumn Admin" ?>
 <?php require_once __DIR__ . "/../layouts/header.php"; ?>
 
 <!-- Layout wrapper -->
@@ -46,12 +46,12 @@
                             <?php for ($j = 0; $j < 5; $j++) {
                               $i = 0; ?>
                               <tr>
-                                <th scope="row"><?= $i + 1 ?></th>
-                                <td><?= $Orders[$i]['id'] ?></td>
+                                <th scope="row"><?= $j + 1 ?></th>
+                                <td>Sản phẩm <?= $j ?></td>
                                 <td><img src="" onerror="this.src='../../public/assets/img/avatars/1.png'" class="w-px-40 h-px-40" /></td>
-                                <td><?= $Orders[$i]['order_total'] ?></td>
-                                <td><?= ($Orders[$i]['order_status'] == 1 ? 'Hoạt động' : 'Khoá') ?></td>
-                                <td><?= ($Orders[$i]['order_status'] == 1 ? 'Hoạt động' : 'Khoá') ?></td>
+                                <td><?= 10 + $j ?></td>
+                                <td>10</td>
+                                <td><?= $Orders[$i]['order_total'] * ($j + 1) ?></td>
                               </tr>
                             <?php }; ?>
                           </tbody>
@@ -76,6 +76,14 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel2">Bạn chắc chắn muốn huỷ đơn hàng này?</h5>
+                  <form id="reason">
+                    <div class="row g-2">
+                      <div class="col mb-0">
+                        <label for="reason" class="form-label">Lý do huỷ</label>
+                        <input type="reason" name="reason" id="reason" class="form-control" placeholder="Enter reason" />
+                      </div>
+                    </div>
+                  </form>
                 </div>
                 <div class="modal-footer">
                   <input class="form-check-input" name="del_id" type="hidden" id="del_id" />
@@ -138,7 +146,6 @@
             <div class="card-body">
               <h6>Tìm thấy <?= count($Orders) ?> kết quả</h6>
               </h5>
-
               <div class="row">
                 <div class="col">
                   <div class="demo-inline-spacing">
@@ -190,9 +197,9 @@
           $('#basicModal').on('show.bs.modal', function(e) {
             let id = $('#id').val();
             if (id != undefined && id != '') {
-              $('#password').prop("disabled", true);
+              $('#reason').prop("disabled", true);
             } else {
-              $('#password').prop("disabled", false);
+              $('#reason').prop("disabled", false);
             }
           })
           $('#formAddCategory').submit(function(e) {

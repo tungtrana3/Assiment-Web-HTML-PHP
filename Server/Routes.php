@@ -27,6 +27,12 @@ return [
         "method" => 'login'
     ],
     [
+        "url" => "/api/login",
+        "name" => "apiLogin",
+        "controller" => Controllers\UserController::class,
+        "method" => 'apiLogin'
+    ],
+    [
         "url" => "/register",
         "name" => "register",
         "controller" => Controllers\UserController::class,
@@ -125,6 +131,12 @@ return [
         "method" => 'getProduct'
     ],
     [
+        "url" => "/api/product/get-by-id",
+        "name" => "getById",
+        "controller" => Controllers\ProductController::class,
+        "method" => 'getById'
+    ],
+    [
         "url" => "/api/product/update",
         "name" => "updateProduct",
         "controller" => Controllers\ProductController::class,
@@ -160,6 +172,13 @@ return [
         "controller" => Controllers\OrderController::class,
         "method" => 'showCanceled'
     ],
+    
+    [
+        "url" => "/api/order",
+        "name" => "getOrder",
+        "controller" => Controllers\OrderController::class,
+        "method" => 'getOrder'
+    ],
     [
         "url" => "/api/order/add",
         "name" => "add",
@@ -186,7 +205,19 @@ return [
         "method" => 'show'
     ],
     [
-        "url" => "/cart/add-to-cart",
+        "url" => "/api/cart/getAll",
+        "name" => "getCart",
+        "controller" => Controllers\CartController::class,
+        "method" => 'getCart'
+    ],
+    [
+        "url" => "/api/product/getname",
+        "name" => "getProductName",
+        "controller" => Controllers\CartController::class,
+        "method" => 'getProductName'
+    ],
+    [
+        "url" => "api/cart/add-to-cart",
         "name" => "addToCart",
         "controller" => Controllers\CartController::class,
         "method" => 'addToCart'

@@ -123,7 +123,7 @@
                         <th scope="row"><?= $i + 1 ?></th>
                         <td><?= $Carts[$i]['product_item_id'] ?></td>
                         <td><?= $Carts[$i]['product_name'] ?></td>
-                        <td><img src="<?= $Carts[$i]['product_image'] ?>" onerror="this.src='../../public/assets/img/avatars/1.png'" class="w-px-40 h-px-40" /></td>
+                        <td><img src="<?= $Carts[$i]['product_image'] ?>" class="w-px-40 h-px-40" /></td>
                         <td>
                           <button type="button" class=" add-quan btn btn-outline-primary" data-id="<?php echo $Carts[$i]['id']; ?>">+</button>
                           <input id="quanty-<?php echo $Carts[$i]['id']; ?>" name="quanty" type="number" style="width:50px; height:40px" value="<?= $Carts[$i]['quanty'] ?>"></input>

@@ -14,193 +14,63 @@ return [
         'method' => 'index'
     ],
     [
-        "url" => "/welcome",
-        "name" => "welcome",
+        "url" => "/cart",
+        "name" => "cart",
         "controller" => Controllers\Index::class,
-        "method" => 'index'
-    ],
-    // User
-    [
-        "url" => "/login",
-        "name" => "login",
-        "controller" => Controllers\UserController::class,
-        "method" => 'login'
+        "method" => 'cart'
     ],
     [
-        "url" => "/register",
-        "name" => "register",
-        "controller" => Controllers\UserController::class,
-        "method" => 'register'
+        "url" => "/product",
+        "name" => "product",
+        "controller" => Controllers\Index::class,
+        "method" => 'product'
+    ],
+    [
+        "url" => "/product-single",
+        "name" => "productSingle",
+        "controller" => Controllers\Index::class,
+        "method" => 'productSingle'
     ],
     [
         "url" => "/forgot-password",
         "name" => "forgotPwd",
-        "controller" => Controllers\UserController::class,
+        "controller" => Controllers\Index::class,
         "method" => 'forgotPwd'
     ],
     [
-        "url" => "/list-account",
-        "name" => "show",
-        "controller" => Controllers\UserController::class,
-        "method" => 'show'
-    ],
-    [
-        "url" => "/api/getUsers",
-        "name" => "getUsers",
-        "controller" => Controllers\UserController::class,
-        "method" => 'getUsers'
-    ],
-    [
-        "url" => "/api/getUserById",
-        "name" => "getUsers",
-        "controller" => Controllers\UserController::class,
-        "method" => 'getUsers'
-    ],
-    [
-        "url" => "/api/addUser",
-        "name" => "addUser",
-        "controller" => Controllers\UserController::class,
-        "method" => 'addUser'
-    ],
-    [
-        "url" => "/api/updateUser",
-        "name" => "updateUser",
-        "controller" => Controllers\UserController::class,
-        "method" => 'updateUser'
-    ],
-    [
-        "url" => "/api/deleteUser",
-        "name" => "deleteUser",
-        "controller" => Controllers\UserController::class,
-        "method" => 'deleteUser'
-    ],
-    // Category Type
-    [
-        "url" => "/category",
-        "name" => "show",
-        "controller" => Controllers\CategoryController::class,
-        "method" => 'show'
-    ],
-    [
-        "url" => "/api/category/getAll",
-        "name" => "getCategory",
-        "controller" => Controllers\CategoryController::class,
-        "method" => 'getCategory'
-    ],
-    [
-        "url" => "/api/category/add",
-        "name" => "addCategory",
-        "controller" => Controllers\CategoryController::class,
-        "method" => 'addCategory'
-    ],
-    [
-        "url" => "/api/category/update",
-        "name" => "updateCategory",
-        "controller" => Controllers\CategoryController::class,
-        "method" => 'updateCategory'
-    ],
-    [
-        "url" => "/api/category/delete",
-        "name" => "delete",
-        "controller" => Controllers\CategoryController::class,
-        "method" => 'delete'
-    ],
-    // Product
-    [
-        "url" => "/product",
-        "name" => "show",
-        "controller" => Controllers\ProductController::class,
-        "method" => 'show'
-    ],
-    [
-        "url" => "/api/product/add",
-        "name" => "addProduct",
-        "controller" => Controllers\ProductController::class,
-        "method" => 'addProduct'
-    ],
-    [
-        "url" => "/api/product/getAll",
-        "name" => "getAll",
-        "controller" => Controllers\ProductController::class,
-        "method" => 'getProduct'
-    ],
-    [
-        "url" => "/api/product/update",
-        "name" => "updateProduct",
-        "controller" => Controllers\ProductController::class,
-        "method" => 'updateProduct'
-    ],
-    [
-        "url" => "/api/product/delete",
-        "name" => "delete",
-        "controller" => Controllers\ProductController::class,
-        "method" => 'delete'
-    ],
-    [
-        "url" => "/api/upload",
-        "name" => "upload",
-        "controller" => Controllers\UploadController::class,
-        "method" => 'upload'
+        "url" => "/profile",
+        "name" => "forgotPwd",
+        "controller" => Controllers\Index::class,
+        "method" => 'forgotPwd'
     ],
     [
         "url" => "/order",
-        "name" => "show",
-        "controller" => Controllers\OrderController::class,
-        "method" => 'show'
+        "name" => "order",
+        "controller" => Controllers\Index::class,
+        "method" => 'order'
     ],
     [
-        "url" => "/order-finished",
-        "name" => "showFinised",
-        "controller" => Controllers\OrderController::class,
-        "method" => 'showFinised'
+        "url" => "/blog",
+        "name" => "blog",
+        "controller" => Controllers\Index::class,
+        "method" => 'blog'
     ],
     [
-        "url" => "/order-canceled",
-        "name" => "showCanceled",
-        "controller" => Controllers\OrderController::class,
-        "method" => 'showCanceled'
+        "url" => "/blog-single",
+        "name" => "singleBlog",
+        "controller" => Controllers\Index::class,
+        "method" => 'singleBlog'
     ],
     [
-        "url" => "/api/order/add",
-        "name" => "add",
-        "controller" => Controllers\OrderController::class,
-        "method" => 'add'
+        "url" => "/contact",
+        "name" => "contact",
+        "controller" => Controllers\Index::class,
+        "method" => 'contact'
     ],
     [
-        "url" => "/api/order/update",
-        "name" => "update",
-        "controller" => Controllers\OrderController::class,
-        "method" => 'update'
-    ],
-    [
-        "url" => "/api/order/delete",
-        "name" => "delete",
-        "controller" => Controllers\OrderController::class,
-        "method" => 'delete'
-    ],
-
-    [
-        "url" => "/cart",
-        "name" => "show",
-        "controller" => Controllers\CartController::class,
-        "method" => 'show'
-    ],
-    [
-        "url" => "/cart/add-to-cart",
-        "name" => "addToCart",
-        "controller" => Controllers\CartController::class,
-        "method" => 'addToCart'
-    ],
-    [
-        "url" => "/cart/update-to-cart",
-        "name" => "updateCart",
-        "controller" => Controllers\CartController::class,
-        "method" => 'updateCart'
-    ],
-    [
-        "url" => "/cart/remove-to-cart",
-        "name" => "removeFromCart",
-        "controller" => Controllers\CartController::class,
-        "method" => 'removeFromCart'
+        "url" => "/about",
+        "name" => "about",
+        "controller" => Controllers\Index::class,
+        "method" => 'about'
     ],
 ];

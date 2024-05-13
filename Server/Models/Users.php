@@ -31,6 +31,14 @@ class Users extends Model
         $Query = "SELECT * FROM user WHERE id = " . $id;
         return $this->SelectRow($Query);
     }
+    public function login(
+        $email_address,
+        $phone_number,
+        $password
+    ) {
+        $Query = "SELECT * FROM user WHERE ( `email_address` LIKE '$email_address' OR `phone_number` LIKE '$phone_number' ) AND `password` = '$password'  ";
+        return $this->SelectRow($Query);
+    }
     public function getUsersByEmail(
         $email_address
     ) {

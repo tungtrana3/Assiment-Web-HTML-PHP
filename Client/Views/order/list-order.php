@@ -48,7 +48,7 @@
                               <tr>
                                 <th scope="row"><?= $i + 1 ?></th>
                                 <td><?= $Orders[$i]['id'] ?></td>
-                                <td><img src="" onerror="this.src='../../public/assets/img/avatars/1.png'" class="w-px-40 h-px-40" /></td>
+                                <td><img src=""  class="w-px-40 h-px-40" /></td>
                                 <td><?= $Orders[$i]['order_total'] ?></td>
                                 <td><?= ($Orders[$i]['order_status'] == 1 ? 'Hoạt động' : 'Khoá') ?></td>
                                 <td><?= ($Orders[$i]['order_status'] == 1 ? 'Hoạt động' : 'Khoá') ?></td>

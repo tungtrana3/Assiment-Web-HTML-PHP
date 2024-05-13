@@ -1,235 +1,114 @@
 <?php $Title = "Autumn Shop" ?>
 <?php require_once __DIR__ . "/../layouts/header.php"; ?>
+<?php require_once __DIR__ . "/../layouts/navigation.php"; ?>
 
-<!-- Layout wrapper -->
-<div class="layout-wrapper layout-content-navbar">
-    <div class="layout-container">
-        <!-- Menu -->
-        <?php require_once __DIR__ . "/../layouts/navigation.php"; ?>
-        <!-- Menu -->
-
-        <!-- Layout container -->
-        <div class="layout-page">
-            <?php require_once __DIR__ . "/../layouts/search-bar.php"; ?>
-            <!-- Content wrapper -->
-            <div class="content-wrapper">
-                <!-- Content -->
-
-                <div class="container-xxl flex-grow-1 container-p-y">
-                    <div class="row">
-                        <div class="col-lg-8 mb-4 order-0">
-                            <div class="card">
-                                <div class="d-flex align-items-end row">
-                                    <div class="col-sm-7">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-primary">Chúc mừng bạn🎉</h5>
-                                            <p class="mb-4">
-                                                Bạn đã bán hơn <span class="fw-bold">72%</span> so với tuần trước.
-                                            </p>
-
-                                            <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-5 text-center text-sm-left">
-                                        <div class="card-body pb-0 px-0 px-md-4">
-                                            <img src="../../public/assets/img/illustrations/man-with-laptop-light.png" height="140" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+<section id="home-section" class="hero">
+    <div class="home-slider owl-carousel">
+        <div class="slider-item" style="background-image: url(../../public/images//bg_1.jpg);">
+            <div class="overlay"></div>
+        </div>
+        <div class="slider-item" style="background-image: url(../../public/images//bg_2.jpg);">
+            <div class="overlay"></div>
+        </div>
+    </div>
+</section>
+<?php require_once __DIR__ . "/../layouts/medal.php"; ?>
+<section class="ftco-section ftco-category ftco-no-pt">
+    <div class="container">
+        <div class="row justify-content-center mb-3 pb-3">
+            <div class="col-md-12 heading-section text-center ftco-animate">
+                <h2 class="mb-4">Danh sách loại sản phẩm</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut.</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <?php for ($i = 0; $i < 2; $i++) { ?>
+                    <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(<?= $category['data'][$i]['image'] ?>);">
+                        <div class="text px-3 py-1">
+                            <h2 class="mb-0"><a href="product?category_id=<?= $category['data'][$i]['id'] ?>"><?= $category['data'][$i]['category_name'] ?></a></h2>
                         </div>
-                        <div class="col-lg-4 col-md-4 order-1">
-                            <div class="row">
-                                <div class="col-lg-6 col-md-12 col-6 mb-4">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="card-title d-flex align-items-start justify-content-between">
-                                                <div class="avatar flex-shrink-0">
-                                                    <img src="../../public/assets/img/icons/unicons/chart-success.png" alt="chart success" class="rounded" />
-                                                </div>
-                                            </div>
-                                            <span class="fw-semibold d-block mb-1">Đơn hàng mới</span>
-                                            <h3 class="card-title mb-2">150</h3>
-                                            <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-12 col-6 mb-4">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="card-title d-flex align-items-start justify-content-between">
-                                                <div class="avatar flex-shrink-0">
-                                                    <img src="../../public/assets/img/icons/unicons/wallet-info.png" alt="Credit Card" class="rounded" />
-                                                </div>
-                                                <div class="dropdown">
-                                                    <button class="btn p-0" type="button" id="cardOpt6" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
-                                                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <span>Doanh thu</span>
-                                            <h3 class="card-title text-wrap mb-1">350.000.000 VND</h3>
-                                            <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/ Giao dịch -->
                     </div>
-                    <div class="row">
-
-                        <!-- Order Statistics -->
-                        <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
-                            <div class="card h-100">
-                                <div class="card-header d-flex align-items-center justify-content-between pb-0">
-                                    <div class="card-title mb-0">
-                                        <h5 class="m-0 me-2">Dữ liệu đơn hàng</h5>
-                                        <small class="text-muted">42.82k Tổng sản phẩm đã bán</small>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <div class="d-flex flex-column align-items-center gap-1">
-                                            <h2 class="mb-2">8,258</h2>
-                                            <span>Tổng đơn hàng</span>
-                                        </div>
-                                    </div>
-                                    <ul class="p-0 m-0">
-                                        <li class="d-flex mb-4 pb-1">
-                                            <div class="avatar flex-shrink-0 me-3">
-                                                <span class="avatar-initial rounded bg-label-primary"><i class="bx bx-mobile-alt"></i></span>
-                                            </div>
-                                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                                <div class="me-2">
-                                                    <h6 class="mb-0">Loại 1</h6>
-                                                    <!-- <small class="text-muted">Mobile, Earbuds, TV</small> -->
-                                                </div>
-                                                <div class="user-progress">
-                                                    <small class="fw-semibold">1300</small>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="d-flex mb-4 pb-1">
-                                            <div class="avatar flex-shrink-0 me-3">
-                                                <span class="avatar-initial rounded bg-label-success"><i class="bx bx-closet"></i></span>
-                                            </div>
-                                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                                <div class="me-2">
-                                                    <h6 class="mb-0">Loại 2</h6>
-                                                    <!-- <small class="text-muted">T-shirt, Jeans, Shoes</small> -->
-                                                </div>
-                                                <div class="user-progress">
-                                                    <small class="fw-semibold">3000</small>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="d-flex mb-4 pb-1">
-                                            <div class="avatar flex-shrink-0 me-3">
-                                                <span class="avatar-initial rounded bg-label-info"><i class="bx bx-home-alt"></i></span>
-                                            </div>
-                                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                                <div class="me-2">
-                                                    <h6 class="mb-0">Loại 3</h6>
-                                                    <!-- <small class="text-muted">Fine Art, Dining</small> -->
-                                                </div>
-                                                <div class="user-progress">
-                                                    <small class="fw-semibold">3330</small>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="d-flex">
-                                            <div class="avatar flex-shrink-0 me-3">
-                                                <span class="avatar-initial rounded bg-label-secondary"><i class="bx bx-football"></i></span>
-                                            </div>
-                                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                                <div class="me-2">
-                                                    <h6 class="mb-0">Loại 4</h6>
-                                                    <small class="text-muted">xx</small>
-                                                </div>
-                                                <div class="user-progress">
-                                                    <small class="fw-semibold">99</small>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                <?php } ?>
+            </div>
+            <div class="col-md-4">
+                <?php for ($i = 2; $i < 4; $i++) { ?>
+                    <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(<?= $category['data'][$i]['image'] ?>);">
+                        <div class="text px-3 py-1">
+                            <h2 class="mb-0"><a href="product?category_id=<?= $category['data'][$i]['id'] ?>"><?= $category['data'][$i]['category_name'] ?></a></h2>
                         </div>
-                        <!--/ Order Statistics -->
-                        <!-- Giao dịch -->
-                        <div class="col-md-6 col-lg-4 order-2 mb-4">
-                            <div class="card h-100">
-                                <div class="card-header d-flex align-items-center justify-content-between">
-                                    <h5 class="card-title m-0 me-2">Giao dịch</h5>
-                                </div>
-                                <div class="card-body">
-                                    <ul class="p-0 m-0">
-                                        <li class="d-flex mb-4 pb-1">
-                                            <div class="avatar flex-shrink-0 me-3">
-                                                <img src="../../public/assets/img/icons/unicons/paypal.png" alt="User" class="rounded" />
-                                            </div>
-                                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                                <div class="me-2">
-                                                    <small class="text-muted d-block mb-1">Momo</small>
-                                                </div>
-                                                <div class="user-progress d-flex align-items-center gap-1">
-                                                    <h6 class="mb-0">+82.6</h6>
-                                                    <span class="text-muted">VND</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="d-flex mb-4 pb-1">
-                                            <div class="avatar flex-shrink-0 me-3">
-                                                <img src="../../public/assets/img/icons/unicons/wallet.png" alt="User" class="rounded" />
-                                            </div>
-                                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                                <div class="me-2">
-                                                    <small class="text-muted d-block mb-1">Thanh toán khi nhận hàng</small>
-                                                </div>
-                                                <div class="user-progress d-flex align-items-center gap-1">
-                                                    <h6 class="mb-0">+270.69</h6>
-                                                    <span class="text-muted">VND</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="d-flex">
-                                            <div class="avatar flex-shrink-0 me-3">
-                                                <img src="../../public/assets/img/icons/unicons/cc-warning.png" alt="User" class="rounded" />
-                                            </div>
-                                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                                <div class="me-2">
-                                                    <small class="text-muted d-block mb-1">VN PAY</small>
-                                                    <!-- <h6 class="mb-0">Ordered Food</h6> -->
-                                                </div>
-                                                <div class="user-progress d-flex align-items-center gap-1">
-                                                    <h6 class="mb-0">-92.45</h6>
-                                                    <span class="text-muted">VND</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                    </div>
+                <?php } ?>
+            </div>
+            <div class="col-md-4">
+                <?php for ($i = 4; $i < 6; $i++) { ?>
+                    <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(<?= $category['data'][$i]['image'] ?>);">
+                        <div class="text px-3 py-1">
+                            <h2 class="mb-0"><a href="product?category_id=<?= $category['data'][$i]['id'] ?>"><?= $category['data'][$i]['category_name'] ?></a></h2>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center mb-3 pb-3">
+            <div class="col-md-12 heading-section text-center ftco-animate">
+                <span class="subheading">Top sản phẩm bán chạy</span>
+                <h2 class="mb-4">Danh sách sản phẩm</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut.</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <?php foreach ($products['data'] as $pro) : ?>
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                    <div class="product">
+                        <a href="/product-single?id=<?= $pro['id'] ?>" class="img-prod">
+                            <img class="img-fluid" src="<?= $pro['product_image'] ?>" alt="No Image">
+                            <div class="overlay"></div>
+                        </a>
+                        <div class="text py-3 pb-4 px-3 text-center">
+                            <h3><a href="product?category_id=<?= $category['data'][$i]['id'] ?>"><?= $pro['name'] ?></a></h3>
+                            <div class="d-flex">
+                                <div class="pricing">
+                                    <p class="price"><span class="mr-2 price-dc"><?= $pro['price'] ?></span><span class="price-sale"><?= $pro['price'] ?></span></p>
                                 </div>
                             </div>
+                            <!-- <div class="bottom-area d-flex px-3">
+                                <div class="m-auto d-flex">
+                                    <a href="product?category_id=<?= $category['data'][$i]['id'] ?>" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                        <span><i class="ion-ios-cart"></i></span>
+                                    </a>
+                                </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
-                <!-- / Content -->
-
-                <?php require_once __DIR__ . "/../layouts/footer.php"; ?>
-
-                <div class="content-backdrop fade"></div>
-            </div>
-            <!-- Content wrapper -->
+            <?php endforeach; ?>
         </div>
-        <!-- / Layout page -->
     </div>
+</section>
 
-    <!-- Overlay -->
-    <div class="layout-overlay layout-menu-toggle"></div>
-</div>
-<!-- / Layout wrapper -->
+<section class="ftco-section img" style="background-image: url(../../public/images//bg_3.jpg);">
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="col-md-6 heading-section ftco-animate deal-of-the-day ftco-animate">
+                <span class="subheading">Chương trình khuyến mãi</span>
+                <h2 class="mb-4">Mua hàng giá sốc</h2>
+                <p>Thịt cá rau củ quả giảm giá 30% khi mua sau 17h30, hoá đơn trên 100k được tặng kèm 1kg rau sạch</p>
+                <h3><a href="product?category_id=<?= $category['data'][$i]['id'] ?>">Thịt heo nạc giá sốc</a></h3>
+                <span class="price">100k <a href="product?category_id=<?= $category['data'][$i]['id'] ?>">giảm còn 60k</a></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<?php require_once __DIR__ . "/../layouts/customer-review.php"; ?>
+<?php require_once __DIR__ . "/../layouts/footer.php"; ?>

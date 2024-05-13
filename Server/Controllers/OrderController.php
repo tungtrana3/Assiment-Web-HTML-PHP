@@ -38,6 +38,38 @@ class OrderController extends \Core\BaseController
         }
         view('order/list-order', compact('Orders'));
     }
+    public function getOrder()
+    {
+        $page  = (isset($_GET['page'])    && !empty($_GET['page']))   ? $_GET['page']   :  1;
+        $size  = (isset($_GET['size'])    && !empty($_GET['size']))   ? $_GET['size']   :  20;
+        $is_active  = (isset($_GET['is_active'])    && !empty($_GET['is_active']))   ? '0'   :  '1';
+        $search  = (isset($_GET['search'])    && !empty($_GET['search']))   ? $_GET['search']   :  '';
+
+        $data = $this->Database->getOrder($page, $size, $search, $is_active, '3');
+        $Orders = array();
+        foreach ($data as $order) {
+            $payment_method = $this->Database->getPaymentMethod($order['payment_method_id']);
+            $shipping_method = $this->Database->getShippingMethod($order['shipping_method']);
+            $shipping_address = $this->Database->getAddress($order['shipping_address']);
+            $user = $this->Database->getUser($order['user_id']);
+            $order_status = $this->Database->getOrderStatus($order['order_status']);
+            // $order_status = $this->Database->getOrderLine($order['order_status']);
+            $order_format = array(
+                "id" => $order['id'],
+                "order_total" => $order['order_total'],
+                "order_date" => $order['order_date'],
+                "shipping_method" => $shipping_method[0]['name'],
+                "payment_method" => $payment_method[0]['value'],
+                "shipping_address" => $shipping_address[0]['city'],
+                "user" => $user[0]['email_address'],
+                "order_status" => $order_status[0]['status']
+            );
+            array_push($Orders, $order_format);
+        }
+        $result = array('data' => $Orders);
+
+        $this->Database->sendResponse(200, json_encode($result));
+    }
     public function showCanceled()
     {
         $page  = (isset($_GET['page'])    && !empty($_GET['page']))   ? $_GET['page']   :  1;

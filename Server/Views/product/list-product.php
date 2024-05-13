@@ -1,4 +1,4 @@
-<?php $Title = "Autumn Shop" ?>
+<?php $Title = "Autumn Admin" ?>
 <?php require_once __DIR__ . "/../layouts/header.php"; ?>
 
 <!-- Layout wrapper -->

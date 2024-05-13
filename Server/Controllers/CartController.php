@@ -47,19 +47,18 @@ class CartController extends \Core\BaseController
             return $this->Database->sendResponse(405);
         }
         $msg = null;
+        $quan  = (isset($_POST['quan'])    && !empty($_POST['quan']))   ? $_POST['quan']   :  null;
+        $cart_id  = (isset($_POST['cart_id'])    && !empty($_POST['cart_id']))   ? $_POST['cart_id']   :  null;
+        $product_id  = (isset($_POST['product_id'])    && !empty($_POST['product_id']))   ? $_POST['product_id']   :  null;
 
-        $image  = (isset($_POST['image'])    && !empty($_POST['image']))   ? $_POST['image']   :  null;
-        $description  = (isset($_POST['description'])    && !empty($_POST['description']))   ? $_POST['description']   :  null;
-        $Cart_name  = (isset($_POST['Cart_name'])    && !empty($_POST['Cart_name']))   ? $_POST['Cart_name']   :  null;
-
-        if ($Cart_name == null || $image == null) {
+        if ($product_id == null || $quan == null) {
             $msg = array('msg' => "Dữ liệu không hợp lệ");
             return $this->Database->sendResponse(400, json_encode($msg));
         }
         if ($msg != null) {
             return $this->Database->sendResponse(400, json_encode(array('msg' => $msg)));
         }
-        $result = $this->Database->addCart($Cart_name, $image, $description);
+        $result = $this->Database->addToCart($cart_id, $quan, $product_id);
 
         $result = array('data' => $result);
 
@@ -111,6 +110,24 @@ class CartController extends \Core\BaseController
             return $this->Database->sendResponse(400, json_encode(array('msg' => $msg)));
         }
         $result = $this->Database->delete($id);
+
+        $result = array('data' => $result);
+        $this->Database->sendResponse(200, json_encode($result));
+    }
+    public function getProductName()
+    {
+        $msg = null;
+
+        $id  = (isset($_GET['id']) && !empty($_GET['id']))   ? $_GET['id']   :  null;
+
+        if ($id == null) {
+            $msg = array('msg' => "Dữ liệu không hợp lệ nha");
+            return $this->Database->sendResponse(400, json_encode($msg));
+        }
+        if ($msg != null) {
+            return $this->Database->sendResponse(400, json_encode(array('msg' => $msg)));
+        }
+        $result = $this->Database->getProductName($id);
 
         $result = array('data' => $result);
         $this->Database->sendResponse(200, json_encode($result));

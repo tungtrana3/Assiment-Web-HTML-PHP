@@ -1,43 +1,33 @@
 <!DOCTYPE html>
-
-<html lang="en" class="light-style customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="../../public/assets/" data-template="vertical-menu-template-free">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>Autumn Shop </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Autumn Shop</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
 
-    <meta name="description" content="" />
+    <link rel="stylesheet" href="../../public/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="../../public/css/animate.css">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../../public/assets/img/favicon/favicon.ico" />
+    <link rel="stylesheet" href="../../public/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../public/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../../public/css/magnific-popup.css">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../public/css/aos.css">
 
-    <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="../../public/assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="../../public/css/ionicons.min.css">
 
-    <!-- Core CSS -->
-    <link rel="stylesheet" href="../../public/assets/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="../../public/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="../../public/assets/css/demo.css" />
+    <link rel="stylesheet" href="../../public/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../../public/css/jquery.timepicker.css">
 
-    <!-- Vendors CSS -->
-    <link rel="stylesheet" href="../../public/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
-    <!-- Page CSS -->
-    <!-- Page -->
-    <link rel="stylesheet" href="../../public/assets/vendor/css/pages/page-auth.css" />
-    <!-- Helpers -->
-    <script src="../../public/assets/vendor/js/helpers.js"></script>
-
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="../../public/assets/js/config.js"></script>
+    <link rel="stylesheet" href="../../public/css/flaticon.css">
+    <link rel="stylesheet" href="../../public/css/icomoon.css">
+    <link rel="stylesheet" href="../../public/css/style.css">
 </head>
 
-<body>
+<body class="goto-here">

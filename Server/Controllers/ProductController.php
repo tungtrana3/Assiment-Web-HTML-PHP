@@ -18,6 +18,7 @@ class ProductController extends \Core\BaseController
 
         $Products = $this->Database->getProduct($page, $size, $search, $is_active, $category_id);
         $Categorys = $this->Database->getCategory(1, 100, '', '1');
+        
         view('product/list-product', compact('Products', 'Categorys'));
     }
     public function getProduct()
@@ -32,6 +33,15 @@ class ProductController extends \Core\BaseController
         $result = array('data' => $data);
         $this->Database->sendResponse(200, json_encode($result));
     }
+    public function getById()
+    {
+        $id  = (isset($_GET['id'])    && !empty($_GET['id']))   ? $_GET['id']   :  1;
+
+        $data = $this->Database->getProductById($id);
+        $result = array('data' => $data);
+        $this->Database->sendResponse(200, json_encode($result));
+    }
+    
     public function addProduct()
     {
         if ($_SERVER['REQUEST_METHOD'] !== "POST") {

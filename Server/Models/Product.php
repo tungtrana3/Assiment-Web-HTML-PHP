@@ -24,6 +24,12 @@ class Product extends Model
         $Query = "SELECT * FROM category WHERE category_name LIKE '%$search%' AND   `delete_at` IS NULL LIMIT $size OFFSET $offset";
         return $this->SelectRow($Query);
     }
+
+    public function getProductById($id)
+    {
+        $Query = "SELECT * FROM product WHERE `id` = '$id'";
+        return $this->SelectRow($Query);
+    }
     public function getProduct($page, $size, $search, $is_active, $category_id)
     {
         $offset = $page * $size - $size;

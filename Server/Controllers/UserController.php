@@ -24,7 +24,33 @@ class UserController extends \Core\BaseController
     }
     public function login()
     {
+        setcookie("isLogin", "", time() - 3600);
+
         view('account/login');
+    }
+    public function apiLogin()
+    {
+        if ($_SERVER['REQUEST_METHOD'] !== "POST") {
+            return $this->Database->sendResponse(405);
+        }
+        $msg = null;
+        $email_address  = (isset($_POST['email_address'])    && !empty($_POST['email_address']))   ? $_POST['email_address']   :  null;
+        $phone_number  = $email_address;
+        $password  = (isset($_POST['password'])    && !empty($_POST['password']))   ? $_POST['password']   :  null;
+
+        if ($email_address == null || $phone_number == null || $password == null) {
+            $msg = array('msg' => "Dữ liệu không hợp lệ ");
+            return $this->Database->sendResponse(400, json_encode($msg));
+        }
+        if ($msg != null) {
+            return $this->Database->sendResponse(400, json_encode(array('msg' => $msg)));
+        }
+        $result = $this->Database->login($email_address, $phone_number, $password);
+        $result = array('data' => $result);
+        if (count($result) > 0) {
+            setcookie('isLogin', 'true', time() + (86400 * 30), "/");
+        }
+        $this->Database->sendResponse(200, json_encode($result));
     }
     public function register()
     {

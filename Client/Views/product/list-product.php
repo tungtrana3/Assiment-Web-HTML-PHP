@@ -137,7 +137,7 @@
                       <tr>
                         <th scope="row"><?= $i + 1 ?></th>
                         <td>
-                          <img src="<?= $Products[$i]['product_image'] ?>" onerror="this.src='../../public/assets/img/avatars/1.png'" class="w-px-40 h-px-40  rounded-circle" />
+                          <img src="<?= $Products[$i]['product_image'] ?>"  class="w-px-40 h-px-40  rounded-circle" />
                         </td>
                         <!-- <td><?= $Products[$i]['id'] ?></td> -->
                         <td><?= $Products[$i]['name'] ?></td>

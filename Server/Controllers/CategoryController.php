@@ -21,10 +21,12 @@ class CategoryController extends \Core\BaseController
     }
     public function getCategory()
     {
-        $name  = (isset($_GET['name'])    && !empty($_GET['name']))   ? $_GET['name']   :  '';
-        $is_active  = (isset($_POST['is_active'])  && !empty($_POST['is_active'])) ? '1'  :  '0';
+        $page  = (isset($_GET['page'])    && !empty($_GET['page']))   ? $_GET['page']   :  1;
+        $size  = (isset($_GET['size'])    && !empty($_GET['size']))   ? $_GET['size']   :  20;
+        $is_active  = (isset($_GET['is_active'])    && !empty($_GET['is_active']))   ? '0'   :  '1';
+        $search  = (isset($_GET['search'])    && !empty($_GET['search']))   ? $_GET['search']   :  '';
 
-        $data = $this->Database->getCategory($name, $is_active);
+        $data = $this->Database->getCategory($page, $size, $search, $is_active);
         $result = array('data' => $data);
         $this->Database->sendResponse(200, json_encode($result));
     }
